@@ -1,0 +1,578 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@100;500&display=swap");
+
+// цвета
+$color_none: rgba(0, 0, 0, 0);
+$color_gray1: rgba(25, 27, 31, 1);
+$color_gray2: rgba(22, 23, 28, 1);
+$color_blue1: rgba(0, 6, 148, 1);
+$color_blue2: rgba(0, 8, 188, 1);
+$color_pink: rgba(155, 55, 255, 1);
+$color_white: rgba(255, 255, 255, 1);
+
+// шаблон стиля текста стиль текста
+@mixin text-style($size, $color, $family) {
+  color: $color;
+  font-family: $family;
+  font-size: $size;
+  font-style: normal;
+  font-weight: 400;
+  line-height: normal;
+}
+
+// шаблоны кнопок
+@mixin button-blue($width, $height, $pattern_color, $font_size) {
+  width: $width;
+  height: $height;
+  text-align: center;
+  background-color: $pattern_color;
+  display: inline-block;
+  border: none;
+  border-radius: 12px;
+  transition: .5s;
+
+  @include text-style($font_size, $color_white, Inter);
+}
+
+@mixin button-nothing($width, $height, $pattern_color, $font_size) {
+  width: $width;
+  height: $height;
+  text-align: center;
+  background-color: $color_none;
+  display: inline-block;
+  border: 1px solid $pattern_color;
+  border-radius: 12px;
+  transition: .5s;
+
+  @include text-style($font_size, $pattern_color, Inter);
+}
+
+.container_center {
+  width: 93%;
+  max-width: 1712px;
+  margin: 50px auto;
+}
+
+// COMPANY
+.container__100 {
+
+  width: 100%;
+  height: fit-content;
+  background-color: $color_gray2;
+  padding: 60px 0;
+  margin: 150px 0;
+}
+
+
+.company {
+
+  &__text {
+    @include text-style(50px, $color_white, inter);
+    margin: 35px 0;
+  }
+
+  &__logo {
+    list-style: none;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-between;
+
+    &__item {
+      margin-right: 1vw;
+
+      &>img {
+        max-width: 300px;
+        max-height: 100px;
+      }
+    }
+  }
+}
+
+// COURSES
+.courses {
+  display: flex;
+  flex-direction: column;
+
+  &__head {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 60px;
+
+    &__text {
+      @include text-style(50px, $color_white, inter)
+    }
+
+    &__buttons {
+      display: flex;
+      justify-content: space-between;
+      width: 140px;
+
+      &__item {
+        transition: .5s;
+        background-color: $color_blue1;
+        border-radius: 100%;
+        border: none;
+        width: 60px;
+        height: 60px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+
+        &:hover {
+          background-color: $color_blue2;
+        }
+      }
+    }
+  }
+
+
+  &__container {
+    overflow: hidden;
+
+    &__tape {
+      display: flex;
+      position: relative;
+      transition: .5s;
+    }
+  }
+}
+
+.tape__item {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border-radius: 40px;
+  background-color: $color_gray2;
+  pointer-events: none;
+  width: 600px;
+  padding: 50px;
+
+  &__chart {
+    width: 40%;
+  }
+
+  &__info {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: flex-start;
+    width: 40%;
+
+    &__text_1 {
+      @include text-style(50px, $color_white, inter);
+      margin-bottom: 40px;
+    }
+
+    &__text_2 {
+      @include text-style(24px, $color_white, inter);
+      margin-bottom: 60px;
+
+    }
+
+    &__buttons {
+      width: 87%;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    &__button {
+      &_item__1 {
+        margin-right: 10px;
+        @include button-blue(286px, 73px, $color_blue1, 24px);
+
+        &:hover {
+          @include button-blue(286px, 73px, $color_blue2, 24px);
+
+        }
+
+      }
+
+      &_item__2 {
+        @include button-nothing(286px, 73px, $color_white, 18px);
+
+        &:hover {
+          @include button-nothing(286px, 73px, $color_white, 18px);
+          opacity: 0.7;
+
+        }
+      }
+    }
+  }
+}
+
+// FORM
+.form {
+  display: grid;
+  grid-template-columns: 60% 40%;
+  grid-auto-rows: minmax(150px, auto);
+
+  position: relative;
+  overflow: hidden;
+
+  margin-top: 200px;
+  border-radius: 40px;
+  background-color: $color_gray2;
+
+  justify-items: center;
+
+  padding: 100px 0;
+
+  &__container {
+
+    grid-column: 2/3;
+    grid-row: 1/3;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+    height: 600px;
+    width: 80%;
+
+
+    &__input {
+      width: 100%;
+      position: relative;
+      padding: 32px 0;
+      border: .5px solid $color_white;
+      border-radius: 14px;
+      opacity: 0.45;
+
+      display: flex;
+      align-items: center;
+      justify-content: center;
+
+      &>input {
+        background-color: $color_none;
+        border: none;
+        outline: none;
+        caret-color: $color_white;
+        width: 90%;
+        // max-width: 520px;
+        transition: .5s;
+        border-bottom: .5px solid $color_none;
+        @include text-style(20px, $color_white, inter);
+        padding: 2px;
+
+        &:focus {
+          border-bottom: .5px solid $color_white;
+
+        }
+
+      }
+
+      &>label {
+        width: 90%;
+        pointer-events: none;
+        position: absolute;
+        @include text-style(20px, $color_white, inter);
+        // left: 30px;
+        transition: .3s;
+
+      }
+
+    }
+    &__button{
+      @include button-blue(100%, 88px, $color_blue1, 24px)
+    }
+    &__checkbox{
+      @include text-style(18px, $color_white, inter);
+      width:100%;
+      display: flex;
+      align-items: center;
+      opacity: .45;
+      &>input{
+        display: none
+      }
+      &__fake{
+        width: 10px;
+        height: 10px;
+        border: 1px solid $color_white;
+        border-radius: 100%;
+        margin-right: 10px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-shrink: 0;
+        
+        &::after{
+          // position: absolute;
+          width: 8px;
+          height: 8px;
+          background-color: $color_white;
+          border-radius: 100%;
+          content: "";
+          transition: .300;
+          opacity: 0;
+        }
+        
+      }
+      
+      &>input:checked + &__fake::after {
+        opacity: 1;
+      }
+    }
+  }
+
+
+
+
+  &__img {
+    position: absolute;
+    transform: translate(-37%, 28%);
+  }
+
+  &__info {
+    min-width: 80%;
+    grid-column: 1/2;
+    grid-row: 1/2;
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+
+
+    &__item {
+      min-width: 15%;
+      display: flex;
+      align-items: flex-start;
+      flex-wrap: wrap;
+      margin-left: 10px;
+
+      &:first-child {
+        margin: 0;
+      }
+
+      &__img {}
+
+      &__text {
+        margin-left: 12px;
+        opacity: .45;
+        @include text-style(20px, $color_white, inter);
+
+      }
+    }
+  }
+}
+
+// INPUT ANIMATION
+.input__Animation:focus+.label__Animation {
+  opacity: 0;
+
+}
+
+@media (max-width: 800px) {
+
+  // COMPANY
+  .container__100 {
+    width: 100%;
+    height: fit-content;
+    background-color: $color_gray2;
+    padding: 20px 0;
+    margin: 50px 0;
+  }
+
+  .company {
+
+    &__text {
+      @include text-style(24px, $color_white, inter);
+      margin: 35px 0;
+    }
+
+    &__logo {
+
+      &__item {
+        margin-right: 1vw;
+        width: 100px;
+        max-height: 50px;
+
+        &>img {
+          max-width: 100px;
+          max-height: 50px;
+
+        }
+      }
+    }
+  }
+
+  // COURSES
+
+  .tape__item {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border-radius: 40px;
+    background-color: $color_gray2;
+    pointer-events: none;
+    width: 600px;
+    flex-direction: column;
+    padding: 40px 0;
+
+    &__chart {
+      width: 70%;
+    }
+
+    &__info {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: flex-start;
+      width: 70%;
+
+      &__text_1 {
+        @include text-style(24px, $color_white, inter);
+        margin-top: 20px;
+        margin-bottom: 40px;
+      }
+
+      &__text_2 {
+        @include text-style(12px, $color_white, inter);
+        margin-bottom: 60px;
+
+      }
+
+      &__buttons {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+      }
+
+      &__button {
+        &_item__1 {
+          margin-right: 10px;
+          @include button-blue(280px, 60px, $color_blue1, 18px);
+
+          &:hover {
+            @include button-blue(280px, 60px, $color_blue2, 18px);
+
+          }
+
+        }
+
+        &_item__2 {
+          @include button-nothing(280px, 60px, $color_white, 12px);
+
+          &:hover {
+            @include button-nothing(280px, 60px, $color_white, 12px);
+            opacity: 0.7;
+
+          }
+        }
+      }
+    }
+  }
+
+  // FORM
+
+  .form {
+    display: grid;
+    grid-template-columns: 100%;
+    grid-auto-rows: minmax(20px, auto);
+
+    position: relative;
+    overflow: hidden;
+
+    margin-top: 200px;
+    border-radius: 40px;
+    background-color: $color_gray2;
+
+    justify-content: center;
+    align-items: center;
+
+    padding: 50px 0;
+
+    &__container {
+      grid-column: 1/1;
+      grid-row: 1/2;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: space-between;
+      height: 300px;
+      width: 80%;
+
+      &__input {
+        position: relative;
+        padding: 15px 0;
+        border: .5px solid $color_white;
+        border-radius: 6.6px;
+        width: 100%;
+
+        &>input {
+          background-color: $color_none;
+          border: none;
+          outline: none;
+          caret-color: $color_white;
+          width: 90%;
+          transition: .5s;
+          border-bottom: .5px solid $color_none;
+          @include text-style(10px, $color_white, inter);
+          padding: 2px;
+
+          &:focus {
+            border-bottom: .5px solid $color_white;
+
+          }
+
+        }
+
+        &>label {
+          width: 90%;
+          pointer-events: none;
+          position: absolute;
+          @include text-style(13px, $color_white, inter);
+          
+          transition: .5s;
+
+        }
+
+      }
+      &__button{
+        @include button-blue(100%, 41px, $color_blue1, 14px)
+      }
+
+      &__checkbox{
+        &__fake{}
+      }
+    }
+
+
+    &__img {
+      grid-row: 2/3;
+      position: relative;
+      width: 100%;
+      transform: translate(0, 0);
+      margin: 30px 0;
+    }
+
+    &__info {
+      min-width: 80%;
+      grid-column: 1/1;
+      grid-row: 3/4;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+
+
+      &__item {
+        min-width: 15%;
+        display: flex;
+        align-items: flex-start;
+        flex-wrap: wrap;
+
+        &__img {
+          max-width: 15px;
+        }
+
+        &__text {
+          margin-left: 12px;
+          opacity: .45;
+          @include text-style(10px, $color_white, inter);
+
+        }
+      }
+    }
+  }
+
+}
+
+// OTHER STYLE
